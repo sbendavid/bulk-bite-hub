@@ -1,12 +1,15 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { api } from "@/lib/api";
+import { LoginRequest, RegisterRequest } from "@/types/auth";
 import type { User } from "@/types";
+import { authService } from "@/services/auth.service";
 
 type AuthCtx = {
   user: User;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  signup: (name: string, email: string, password: string) => Promise<void>;
+  login: (payload: LoginRequest) => Promise<void>;
+  signup: (payload: RegisterRequest) => Promise<void>;
+    verifyOtp: (email: string, otp: string) => Promise<void>;
+  resendOtp: (email: string) => Promise<void>;
   logout: () => void;
 };
 
@@ -18,7 +21,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     try {
-      const u = localStorage.getItem("bulkbite_user");
+      const u = localStorage.getItem("user");
       if (u) setUser(JSON.parse(u));
     } catch {}
     setLoading(false);
@@ -29,16 +32,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       value={{
         user,
         loading,
-        login: async (email, password) => {
-          const u = await api.login(email, password);
+        login: async (LoginRequest: LoginRequest) => {
+          const u = await authService.login(LoginRequest);
           setUser(u);
         },
-        signup: async (name, email, password) => {
-          const u = await api.signup(name, email, password);
+        signup: async (RegisterRequest: RegisterRequest) => {
+          const u = await authService.signup(RegisterRequest);
+          console.log({ u });
           setUser(u);
+        },
+        verifyOtp: async (email: string, otp: string) => {
+          const u = await authService.verifyOtp(email, otp);
+          setUser(u);
+        },
+        resendOtp: async (email: string) => {
+          await authService.resendOtp(email);
         },
         logout: () => {
-          api.logout();
+          authService.logout();
           setUser(null);
         },
       }}

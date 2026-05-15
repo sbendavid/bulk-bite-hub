@@ -23,7 +23,7 @@ const Index = () => {
   const [active, setActive] = useState("All");
   const [query, setQuery] = useState("");
 
-  useEffect(() => { api.listVendors().then(setVendors); }, []);
+  // useEffect(() => { api.listVendors().then(setVendors); }, []);
 
   const filtered = (vendors ?? []).filter((v) => {
     const matchQ = v.name.toLowerCase().includes(query.toLowerCase()) || v.cuisine.toLowerCase().includes(query.toLowerCase());

@@ -29,7 +29,13 @@ export type CartLine = {
   qty: number; // servings
 };
 
-export type OrderStatus = 'placed' | 'confirmed' | 'preparing' | 'out_for_delivery' | 'delivered' | 'cancelled';
+export type OrderStatus =
+  | "placed"
+  | "confirmed"
+  | "preparing"
+  | "out_for_delivery"
+  | "delivered"
+  | "cancelled";
 
 export type Order = {
   id: string;
@@ -47,7 +53,7 @@ export type Order = {
 
 export type Notification = {
   id: string;
-  type: 'order' | 'promo' | 'message' | 'system';
+  type: "order" | "promo" | "message" | "system";
   title: string;
   body: string;
   createdAt: string;
@@ -68,9 +74,14 @@ export type ChatThread = {
 export type ChatMessage = {
   id: string;
   threadId: string;
-  from: 'me' | 'them';
+  from: "me" | "them";
   text: string;
   at: string;
 };
 
-export type User = { id: string; name: string; email: string; avatar?: string } | null;
+export type User = {
+  id: string;
+  fullName: string;
+  email: string;
+  avatar?: string;
+} | null;
