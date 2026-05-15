@@ -2,7 +2,7 @@ import { AppLayout } from "@/components/AppLayout";
 import { TopBar } from "@/components/TopBar";
 import { useAuth } from "@/context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import { LogOut, MapPin, CreditCard, Bell, HelpCircle, ChevronRight, User as UserIcon } from "lucide-react";
+import { LogOut, MapPin, CreditCard, Bell, HelpCircle, ChevronRight, User as UserIcon, Store } from "lucide-react";
 
 const Account = () => {
   const { user, logout } = useAuth();
@@ -41,6 +41,15 @@ const Account = () => {
             </Link>
           ))}
         </section>
+
+        <Link to="/vendor-portal" className="mt-5 flex items-center gap-3 p-4 rounded-2xl gradient-cool text-primary-foreground shadow-glow hover:scale-[1.01] transition-transform">
+          <div className="h-10 w-10 rounded-xl bg-white/25 flex items-center justify-center"><Store className="h-5 w-5" /></div>
+          <div className="flex-1">
+            <div className="font-display font-bold">Sell on Bulkbite</div>
+            <div className="text-xs opacity-90">Open your vendor dashboard, manage dishes & orders</div>
+          </div>
+          <ChevronRight className="h-5 w-5" />
+        </Link>
 
         {user && (
           <button
