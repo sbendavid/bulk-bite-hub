@@ -14,10 +14,10 @@ const Account = () => {
       <main className="container max-w-3xl pb-12">
         <section className="rounded-2xl gradient-sunset p-5 text-primary-foreground shadow-glow flex items-center gap-4">
           <div className="h-14 w-14 rounded-full bg-white/20 flex items-center justify-center font-display font-bold text-xl">
-            {user?.name?.[0]?.toUpperCase() ?? <UserIcon className="h-6 w-6" />}
+            {user?.fullName?.[0]?.toUpperCase() ?? <UserIcon className="h-6 w-6" />}
           </div>
           <div className="flex-1 min-w-0">
-            <div className="font-display font-bold text-xl">{user?.name ?? "Guest"}</div>
+            <div className="font-display font-bold text-xl">{user?.fullName ?? "Guest"}</div>
             <div className="text-sm opacity-90 truncate">{user?.email ?? "Sign in to save your orders"}</div>
           </div>
           {!user && (

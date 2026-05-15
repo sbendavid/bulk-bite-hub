@@ -15,9 +15,9 @@ const Ctx = createContext<NotifCtx | null>(null);
 export function NotificationsProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<Notification[]>([]);
 
-  useEffect(() => {
-    api.listNotifications().then(setItems);
-  }, []);
+  // useEffect(() => {
+  //   api.listNotifications().then(setItems);
+  // }, []);
 
   // Simulated realtime push (every 45s, surfaces a toast — swap for WebSocket/SSE on your Node API)
   useEffect(() => {

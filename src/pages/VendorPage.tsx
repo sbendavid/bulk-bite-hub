@@ -16,11 +16,11 @@ const VendorPage = () => {
   const [items, setItems] = useState<MenuItem[] | null>(null);
   const { totalServings, totalAmount, vendorId } = useCart();
 
-  useEffect(() => {
-    if (!id) return;
-    api.getVendor(id).then((v) => setVendor(v ?? null));
-    api.listMenu(id).then(setItems);
-  }, [id]);
+  // useEffect(() => {
+  //   if (!id) return;
+  //   api.getVendor(id).then((v) => setVendor(v ?? null));
+  //   api.listMenu(id).then(setItems);
+  // }, [id]);
 
   return (
     <AppLayout>
