@@ -17,6 +17,13 @@ import Notifications from "./pages/Notifications";
 import Account from "./pages/Account";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
+import VendorDashboard from "./pages/vendor/VendorDashboard";
+import VendorOrders from "./pages/vendor/VendorOrders";
+import VendorOrderDetail from "./pages/vendor/VendorOrderDetail";
+import VendorDishes from "./pages/vendor/VendorDishes";
+import VendorDishForm from "./pages/vendor/VendorDishForm";
+import VendorVerification from "./pages/vendor/VendorVerification";
+import VendorProfile from "./pages/vendor/VendorProfile";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +48,14 @@ const App = () => (
                 <Route path="/account" element={<Account />} />
                 <Route path="/login" element={<Auth mode="login" />} />
                 <Route path="/signup" element={<Auth mode="signup" />} />
+                <Route path="/vendor-portal" element={<VendorDashboard />} />
+                <Route path="/vendor-portal/orders" element={<VendorOrders />} />
+                <Route path="/vendor-portal/orders/:id" element={<VendorOrderDetail />} />
+                <Route path="/vendor-portal/dishes" element={<VendorDishes />} />
+                <Route path="/vendor-portal/dishes/new" element={<VendorDishForm />} />
+                <Route path="/vendor-portal/dishes/:id" element={<VendorDishForm />} />
+                <Route path="/vendor-portal/verification" element={<VendorVerification />} />
+                <Route path="/vendor-portal/profile" element={<VendorProfile />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </CartProvider>
